@@ -74,8 +74,8 @@ dbGetQuery(mydb,paste("INSERT INTO sales (Date, Month, Year, CustomerID, Custome
 #the age of a customer and the mean of the number of units bought by the costumer
 #during 2009 
 
-#Now I select the sum of units for each customer and the age of each customer, and this information grouped by customerID  
-df2<-dbGetQuery(mydb,paste("SELECT CustomerID,CustomerAge, SUM(OrderQuantity) AS 'Sum.of.Units.Ordered.by.Customer' FROM sales GROUP BY CustomerID"))
+#Now I select the sum of units for each customer during 2009 and the age of each customer, and this information grouped by customerID  
+df2<-dbGetQuery(mydb,paste("SELECT CustomerID,CustomerAge, SUM(OrderQuantity) AS 'Sum.of.Units.Ordered.by.Customer' FROM sales GROUP BY CustomerID WHERE Date BETWEEN '2009/01/01' AND '2009/12/31'"))
 df2
 
 #I will choose a random sample of size 30, then I will assume that this sample corresponds to a simple random sampling extracted from the population
